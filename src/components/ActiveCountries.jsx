@@ -5,20 +5,24 @@ const ActiveCountries = (props) => {
     // instead of removing country from selectedCountries and re running GET, i want to delete from database and re-render chart
 
     const removeSelectedCountry = (country) => {
+
+        // loops through the main data state, finds all elements with the matching country value and excludes them from the updated state
         props.setCountriesData((prevData) =>
             prevData.filter((el) => {
-                console.log("el countrycode", el.Country);
                 return el.Country !== country; // return true if the object doesn't match the condition
             })
         );
-        console.log(props.countriesData)
-    }
 
-    // const removeSelectedCountry = (country) => {
-    //     props.setSelectedCountries(
-    //         props.selectedCountries.filter((el) => el.slug !== country)
-    //     );
-    // };
+        // set selectedCountries, prevSelectedCountries so active country buttons update and to prep for future input
+        const selectedCountries = props.selectedCountries.filter(
+            (el) => el.country !== country
+        );
+
+    
+        props.setSelectedCountries(selectedCountries);
+        props.prevSelectedCountries.current = selectedCountries;
+    };
+
 
     const handleButtonClick = (el) => {
         const countryObj = countries.find(

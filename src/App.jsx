@@ -10,6 +10,18 @@ function App() {
     // main data array returned from API
     const [countriesData, setCountriesData] = useState([]);
 
+    // toggles for chart data type
+    const [capitaState, setCapitaState] = useState(false);
+
+    const handleCapitaClick = () => {
+        console.log("capita click", capitaState);
+        if (!capitaState) {
+            setCapitaState(true);
+        } else {
+            setCapitaState(false);
+        }
+    };
+
     // date states from date range picker
     const [date, setDate] = useState(new Date());
     const [startDate, setStartDate] = useState();
@@ -93,16 +105,22 @@ function App() {
 
                 const data = await res.json();
                 return data
-                    .map(({ Country, Date, Confirmed, CountryCode }, i, arr) => ({
-                        Country,
-                        Date: Date.substring(0, 10),
-                        New:
-                            i > 0
-                                ? Confirmed - arr[i - 1].Confirmed
-                                : Confirmed,
-                        Confirmed: Confirmed,
-                        CountryCode: CountryCode
-                    }))
+                    .map(
+                        (
+                            { Country, Date, Confirmed, CountryCode },
+                            i,
+                            arr
+                        ) => ({
+                            Country,
+                            Date: Date.substring(0, 10),
+                            New:
+                                i > 0
+                                    ? Confirmed - arr[i - 1].Confirmed
+                                    : Confirmed,
+                            Confirmed: Confirmed,
+                            CountryCode: CountryCode,
+                        })
+                    )
                     .slice(1);
             });
             const allData = await Promise.all(dataPromises);
@@ -127,15 +145,20 @@ function App() {
             />
 
             <Cal date={date} setDate={setDate} />
-            <button onClick={getData}>submit</button>
+            <br />
+            <button onClick={handleCapitaClick}>per capita</button>
             <br />
             <ActiveCountries
                 selectedCountries={selectedCountries}
                 setSelectedCountries={setSelectedCountries}
                 countriesData={countriesData}
                 setCountriesData={setCountriesData}
+                prevSelectedCountries={prevSelectedCountries}
             />
-            <LineChart countriesData={countriesData} />
+            <LineChart
+                countriesData={countriesData}
+                capitaState={capitaState}
+            />
         </div>
     );
 }

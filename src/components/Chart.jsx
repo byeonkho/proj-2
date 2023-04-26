@@ -34,12 +34,7 @@ const LineChart = (props) => {
     });
 
     useEffect(() => {
-
-        // if (props.countriesData.length === 0) {
-        //     return;
-        // }
-
-        console.log("chart render")
+        console.log("chart render");
         const countryNames = [];
         const series = [];
 
