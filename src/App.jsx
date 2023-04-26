@@ -58,45 +58,60 @@ function App() {
     }, [selectedCountries, startDate, endDate]);
 
     const getData = async () => {
-        try {
-            const dataPromises = selectedCountries.map(
-                async (country, index) => {
-                    await new Promise((resolve) =>
-                        setTimeout(resolve, index * 1000)
-                    );
+        let fetchCountries;
 
-                    const res = await fetch(
-                        `https://api.covid19api.com/country/${country.slug}?from=${startDate}&to=${endDate}`,
-                        requestOptions
-                    );
-
-                    if (!res.ok) {
-                        throw new Error(`HTTP error! Status: ${res.status}`);
-                    }
-
-                    const data = await res.json();
-                    return data
-                        .map(({ Country, Date, Confirmed }, i, arr) => ({
-                            Country,
-                            Date: Date.substring(0, 10),
-                            New:
-                                i > 0
-                                    ? Confirmed - arr[i - 1].Confirmed
-                                    : Confirmed,
-                            Confirmed: Confirmed,
-                        }))
-                        .slice(1);
-                }
+        if (
+            startDate === prevStartDate.current &&
+            endDate === prevEndDate.current
+        ) {
+            // check what is different betweeen prevSelectedCountries and selectedCountries
+            fetchCountries = selectedCountries.filter(
+                (value) => !prevSelectedCountries.current.includes(value)
             );
+            console.log("fetchcountries", fetchCountries);
+            
+            // accout for first time input
+        } else {
+            fetchCountries = selectedCountries;
+            console.log("debug fetch")
+        }
+
+        try {
+            const dataPromises = fetchCountries.map(async (country, index) => {
+                await new Promise((resolve) =>
+                    setTimeout(resolve, index * 1000)
+                );
+
+                const res = await fetch(
+                    `https://api.covid19api.com/country/${country.slug}?from=${startDate}&to=${endDate}`,
+                    requestOptions
+                );
+
+                if (!res.ok) {
+                    throw new Error(`HTTP error! Status: ${res.status}`);
+                }
+
+                const data = await res.json();
+                return data
+                    .map(({ Country, Date, Confirmed }, i, arr) => ({
+                        Country,
+                        Date: Date.substring(0, 10),
+                        New:
+                            i > 0
+                                ? Confirmed - arr[i - 1].Confirmed
+                                : Confirmed,
+                        Confirmed: Confirmed,
+                    }))
+                    .slice(1);
+            });
             const allData = await Promise.all(dataPromises);
             const combinedData = allData.flat();
-            setCountriesData(combinedData);
+            setCountriesData((prevData) => [...prevData, ...combinedData]);
 
             // sets submitted dates and countries as ref
             prevStartDate.current = startDate;
             prevEndDate.current = endDate;
             prevSelectedCountries.current = selectedCountries;
-
         } catch (error) {
             console.error("Error fetching data:", error.message);
         }
