@@ -69,11 +69,11 @@ function App() {
                 (value) => !prevSelectedCountries.current.includes(value)
             );
             console.log("fetchcountries", fetchCountries);
-            
-            // accout for first time input
+
+            // account for first time input
         } else {
             fetchCountries = selectedCountries;
-            console.log("debug fetch")
+            console.log("debug fetch");
         }
 
         try {
@@ -93,7 +93,7 @@ function App() {
 
                 const data = await res.json();
                 return data
-                    .map(({ Country, Date, Confirmed }, i, arr) => ({
+                    .map(({ Country, Date, Confirmed, CountryCode }, i, arr) => ({
                         Country,
                         Date: Date.substring(0, 10),
                         New:
@@ -101,6 +101,7 @@ function App() {
                                 ? Confirmed - arr[i - 1].Confirmed
                                 : Confirmed,
                         Confirmed: Confirmed,
+                        CountryCode: CountryCode
                     }))
                     .slice(1);
             });
@@ -131,6 +132,8 @@ function App() {
             <ActiveCountries
                 selectedCountries={selectedCountries}
                 setSelectedCountries={setSelectedCountries}
+                countriesData={countriesData}
+                setCountriesData={setCountriesData}
             />
             <LineChart countriesData={countriesData} />
         </div>
