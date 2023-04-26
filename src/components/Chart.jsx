@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Chart from "react-apexcharts";
+import countries from "../countries";
 
 const LineChart = (props) => {
     const [chartData, setChartData] = useState({
@@ -27,6 +28,9 @@ const LineChart = (props) => {
                 data: [],
             },
         ],
+        yaxis: {
+            min: 0,
+        },
     });
 
     useEffect(() => {
@@ -68,6 +72,9 @@ const LineChart = (props) => {
                 },
             },
             series: series,
+            yaxis: {
+                min: 0,
+            },
         });
     }, [props.countriesData]);
 

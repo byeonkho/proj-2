@@ -349,4 +349,1178 @@ const countries = [
     },
 ];
 
-export const countryNames = countries.map((country) => country.Country).sort();
+const pop = [
+    {
+        name: "Afghanistan",
+        iso: "AF",
+        population: 38041754,
+    },
+    {
+        name: "Albania",
+        iso: "AL",
+        population: 2880917,
+    },
+    {
+        name: "Algeria",
+        iso: "DZ",
+        population: 43053054,
+    },
+    {
+        name: "American Samoa",
+        iso: "AS",
+        population: 55312,
+    },
+    {
+        name: "Andorra",
+        iso: "AD",
+        population: 77142,
+    },
+    {
+        name: "Angola",
+        iso: "AO",
+        population: 31825295,
+    },
+    {
+        name: "Anguilla",
+        iso: "AI",
+        population: 14869,
+    },
+    {
+        name: "Antigua and Barbuda",
+        iso: "AG",
+        population: 97118,
+    },
+    {
+        name: "Argentina",
+        iso: "AR",
+        population: 44780677,
+    },
+    {
+        name: "Armenia",
+        iso: "AM",
+        population: 2957731,
+    },
+    {
+        name: "Aruba",
+        iso: "AW",
+        population: 106314,
+    },
+    {
+        name: "Australia",
+        iso: "AU",
+        population: 25203198,
+    },
+    {
+        name: "Austria",
+        iso: "AT",
+        population: 8955102,
+    },
+    {
+        name: "Azerbaijan",
+        iso: "AZ",
+        population: 10047718,
+    },
+    {
+        name: "Bahamas",
+        iso: "BS",
+        population: 389482,
+    },
+    {
+        name: "Bahrain",
+        iso: "BH",
+        population: 1641172,
+    },
+    {
+        name: "Bangladesh",
+        iso: "BD",
+        population: 163046161,
+    },
+    {
+        name: "Barbados",
+        iso: "BB",
+        population: 287025,
+    },
+    {
+        name: "Belarus",
+        iso: "BY",
+        population: 9452411,
+    },
+    {
+        name: "Belgium",
+        iso: "BE",
+        population: 11539328,
+    },
+    {
+        name: "Belize",
+        iso: "BZ",
+        population: 390353,
+    },
+    {
+        name: "Benin",
+        iso: "BJ",
+        population: 11801151,
+    },
+    {
+        name: "Bermuda",
+        iso: "BM",
+        population: 62506,
+    },
+    {
+        name: "Bhutan",
+        iso: "BT",
+        population: 763092,
+    },
+    {
+        name: "Bolivia",
+        iso: "BO",
+        population: 11513100,
+    },
+    {
+        name: "Bosnia and Herzegovina",
+        iso: "BA",
+        population: 3301000,
+    },
+    {
+        name: "Botswana",
+        iso: "BW",
+        population: 2303697,
+    },
+    {
+        name: "Brazil",
+        iso: "BR",
+        population: 211049527,
+    },
+    {
+        name: "British Virgin Islands",
+        iso: "VG",
+        population: 30030,
+    },
+    {
+        name: "Brunei",
+        iso: "BN",
+        population: 433285,
+    },
+    {
+        name: "Bulgaria",
+        iso: "BG",
+        population: 7000119,
+    },
+    {
+        name: "Burkina Faso",
+        iso: "BF",
+        population: 20321378,
+    },
+    {
+        name: "Burundi",
+        iso: "BI",
+        population: 11530580,
+    },
+    {
+        name: "Cambodia",
+        iso: "KH",
+        population: 16486542,
+    },
+    {
+        name: "Cameroon",
+        iso: "CM",
+        population: 25876380,
+    },
+    {
+        name: "Canada",
+        iso: "CA",
+        population: 37411047,
+    },
+    {
+        name: "Cape Verde",
+        iso: "CV",
+        population: 549935,
+    },
+    {
+        name: "Cayman Islands",
+        iso: "KY",
+        population: 64948,
+    },
+    {
+        name: "Central African Republic",
+        iso: "CF",
+        population: 4745185,
+    },
+    {
+        name: "Chad",
+        iso: "TD",
+        population: 15946876,
+    },
+    {
+        name: "Chile",
+        iso: "CL",
+        population: 18952038,
+    },
+    {
+        name: "China",
+        iso: "CN",
+        population: 1433783686,
+    },
+    {
+        name: "Colombia",
+        iso: "CO",
+        population: 50339443,
+    },
+    {
+        name: "Comoros",
+        iso: "KM",
+        population: 850886,
+    },
+    {
+        name: "Cook Islands",
+        iso: "CK",
+        population: 17548,
+    },
+    {
+        name: "Costa Rica",
+        iso: "CR",
+        population: 5047561,
+    },
+    {
+        name: "Croatia",
+        iso: "HR",
+        population: 4130304,
+    },
+    {
+        name: "Cuba",
+        iso: "CU",
+        population: 11333483,
+    },
+    {
+        name: "Curacao",
+        iso: "CW",
+        population: 163424,
+    },
+    {
+        name: "Cyprus",
+        iso: "CY",
+        population: 1198575,
+    },
+    {
+        name: "Czech Republic",
+        iso: "CZ",
+        population: 10689209,
+    },
+    {
+        name: "Denmark",
+        iso: "DK",
+        population: 5771876,
+    },
+    {
+        name: "Djibouti",
+        iso: "DJ",
+        population: 973560,
+    },
+    {
+        name: "Dominica",
+        iso: "DM",
+        population: 71808,
+    },
+    {
+        name: "Dominican Republic",
+        iso: "DO",
+        population: 10738958,
+    },
+    {
+        name: "DR Congo",
+        iso: "CD",
+        population: 86790567,
+    },
+    {
+        name: "Ecuador",
+        iso: "EC",
+        population: 17373662,
+    },
+    {
+        name: "Egypt",
+        iso: "EG",
+        population: 100388073,
+    },
+    {
+        name: "El Salvador",
+        iso: "SV",
+        population: 6453553,
+    },
+    {
+        name: "Equatorial Guinea",
+        iso: "GQ",
+        population: 1355986,
+    },
+    {
+        name: "Eritrea",
+        iso: "ER",
+        population: 3497117,
+    },
+    {
+        name: "Estonia",
+        iso: "EE",
+        population: 1325648,
+    },
+    {
+        name: "Ethiopia",
+        iso: "ET",
+        population: 112078730,
+    },
+    {
+        name: "Falkland Islands",
+        iso: "FK",
+        population: 3377,
+    },
+    {
+        name: "Faroe Islands",
+        iso: "FO",
+        population: 48678,
+    },
+    {
+        name: "Fiji",
+        iso: "FJ",
+        population: 889953,
+    },
+    {
+        name: "Finland",
+        iso: "FI",
+        population: 5532156,
+    },
+    {
+        name: "France",
+        iso: "FR",
+        population: 65129728,
+    },
+    {
+        name: "French Guiana",
+        iso: "GF",
+        population: 290832,
+    },
+    {
+        name: "French Polynesia",
+        iso: "PF",
+        population: 279287,
+    },
+    {
+        name: "Gabon",
+        iso: "GA",
+        population: 2172579,
+    },
+    {
+        name: "Gambia",
+        iso: "GM",
+        population: 2347706,
+    },
+    {
+        name: "Georgia",
+        iso: "GE",
+        population: 3996765,
+    },
+    {
+        name: "Germany",
+        iso: "DE",
+        population: 83517045,
+    },
+    {
+        name: "Ghana",
+        iso: "GH",
+        population: 30417856,
+    },
+    {
+        name: "Gibraltar",
+        iso: "GI",
+        population: 33701,
+    },
+    {
+        name: "Greece",
+        iso: "GR",
+        population: 10473455,
+    },
+    {
+        name: "Greenland",
+        iso: "GL",
+        population: 56672,
+    },
+    {
+        name: "Grenada",
+        iso: "GD",
+        population: 112003,
+    },
+    {
+        name: "Guadeloupe",
+        iso: "GP",
+        population: 400056,
+    },
+    {
+        name: "Guam",
+        iso: "GU",
+        population: 167294,
+    },
+    {
+        name: "Guatemala",
+        iso: "GT",
+        population: 17581472,
+    },
+    {
+        name: "Guinea",
+        iso: "GN",
+        population: 12771246,
+    },
+    {
+        name: "Guinea-Bissau",
+        iso: "GW",
+        population: 1920922,
+    },
+    {
+        name: "Guyana",
+        iso: "GY",
+        population: 782766,
+    },
+    {
+        name: "Haiti",
+        iso: "HT",
+        population: 11263077,
+    },
+    {
+        name: "Honduras",
+        iso: "HN",
+        population: 9746117,
+    },
+    {
+        name: "Hong Kong",
+        iso: "HK",
+        population: 7436154,
+    },
+    {
+        name: "Hungary",
+        iso: "HU",
+        population: 9684679,
+    },
+    {
+        name: "Iceland",
+        iso: "IS",
+        population: 339031,
+    },
+    {
+        name: "India",
+        iso: "IN",
+        population: 1366417754,
+    },
+    {
+        name: "Indonesia",
+        iso: "ID",
+        population: 270625568,
+    },
+    {
+        name: "Iran",
+        iso: "IR",
+        population: 82913906,
+    },
+    {
+        name: "Iraq",
+        iso: "IQ",
+        population: 39309783,
+    },
+    {
+        name: "Ireland",
+        iso: "IE",
+        population: 4882495,
+    },
+    {
+        name: "Isle of Man",
+        iso: "IM",
+        population: 84584,
+    },
+    {
+        name: "Israel",
+        iso: "IL",
+        population: 8519377,
+    },
+    {
+        name: "Italy",
+        iso: "IT",
+        population: 60550075,
+    },
+    {
+        name: "Ivory Coast",
+        iso: "CI",
+        population: 25716544,
+    },
+    {
+        name: "Jamaica",
+        iso: "JM",
+        population: 2948279,
+    },
+    {
+        name: "Japan",
+        iso: "JP",
+        population: 126860301,
+    },
+    {
+        name: "Jordan",
+        iso: "JO",
+        population: 10101694,
+    },
+    {
+        name: "Kazakhstan",
+        iso: "KZ",
+        population: 18551427,
+    },
+    {
+        name: "Kenya",
+        iso: "KE",
+        population: 52573973,
+    },
+    {
+        name: "Kiribati",
+        iso: "KI",
+        population: 117606,
+    },
+    {
+        name: "Kuwait",
+        iso: "KW",
+        population: 4207083,
+    },
+    {
+        name: "Kyrgyzstan",
+        iso: "KG",
+        population: 6415850,
+    },
+    {
+        name: "Laos",
+        iso: "LA",
+        population: 7169455,
+    },
+    {
+        name: "Latvia",
+        iso: "LV",
+        population: 1906743,
+    },
+    {
+        name: "Lebanon",
+        iso: "LB",
+        population: 6855713,
+    },
+    {
+        name: "Lesotho",
+        iso: "LS",
+        population: 2125268,
+    },
+    {
+        name: "Liberia",
+        iso: "LR",
+        population: 4937374,
+    },
+    {
+        name: "Libya",
+        iso: "LY",
+        population: 6777452,
+    },
+    {
+        name: "Liechtenstein",
+        iso: "LI",
+        population: 38019,
+    },
+    {
+        name: "Lithuania",
+        iso: "LT",
+        population: 2759627,
+    },
+    {
+        name: "Luxembourg",
+        iso: "LU",
+        population: 615729,
+    },
+    {
+        name: "Macau",
+        iso: "MO",
+        population: 640445,
+    },
+    {
+        name: "Macedonia",
+        iso: "MK",
+        population: 2083459,
+    },
+    {
+        name: "Madagascar",
+        iso: "MG",
+        population: 26969307,
+    },
+    {
+        name: "Malawi",
+        iso: "MW",
+        population: 18628747,
+    },
+    {
+        name: "Malaysia",
+        iso: "MY",
+        population: 31949777,
+    },
+    {
+        name: "Maldives",
+        iso: "MV",
+        population: 530953,
+    },
+    {
+        name: "Mali",
+        iso: "ML",
+        population: 19658031,
+    },
+    {
+        name: "Malta",
+        iso: "MT",
+        population: 440372,
+    },
+    {
+        name: "Marshall Islands",
+        iso: "MH",
+        population: 58791,
+    },
+    {
+        name: "Martinique",
+        iso: "MQ",
+        population: 375554,
+    },
+    {
+        name: "Mauritania",
+        iso: "MR",
+        population: 4525696,
+    },
+    {
+        name: "Mauritius",
+        iso: "MU",
+        population: 1269668,
+    },
+    {
+        name: "Mayotte",
+        iso: "YT",
+        population: 266150,
+    },
+    {
+        name: "Mexico",
+        iso: "MX",
+        population: 127575529,
+    },
+    {
+        name: "Micronesia",
+        iso: "FM",
+        population: 113815,
+    },
+    {
+        name: "Moldova",
+        iso: "MD",
+        population: 4043263,
+    },
+    {
+        name: "Monaco",
+        iso: "MC",
+        population: 38964,
+    },
+    {
+        name: "Mongolia",
+        iso: "MN",
+        population: 3225167,
+    },
+    {
+        name: "Montenegro",
+        iso: "ME",
+        population: 627987,
+    },
+    {
+        name: "Montserrat",
+        iso: "MS",
+        population: 4989,
+    },
+    {
+        name: "Morocco",
+        iso: "MA",
+        population: 36471769,
+    },
+    {
+        name: "Mozambique",
+        iso: "MZ",
+        population: 30366036,
+    },
+    {
+        name: "Myanmar",
+        iso: "MM",
+        population: 54045420,
+    },
+    {
+        name: "Namibia",
+        iso: "NA",
+        population: 2494530,
+    },
+    {
+        name: "Nauru",
+        iso: "NR",
+        population: 10756,
+    },
+    {
+        name: "Nepal",
+        iso: "NP",
+        population: 28608710,
+    },
+    {
+        name: "Netherlands",
+        iso: "NL",
+        population: 17097130,
+    },
+    {
+        name: "New Caledonia",
+        iso: "NC",
+        population: 282750,
+    },
+    {
+        name: "New Zealand",
+        iso: "NZ",
+        population: 4783063,
+    },
+    {
+        name: "Nicaragua",
+        iso: "NI",
+        population: 6545502,
+    },
+    {
+        name: "Niger",
+        iso: "NE",
+        population: 23310715,
+    },
+    {
+        name: "Nigeria",
+        iso: "NG",
+        population: 200963599,
+    },
+    {
+        name: "Niue",
+        iso: "NU",
+        population: 1615,
+    },
+    {
+        name: "North Korea",
+        iso: "KP",
+        population: 25666161,
+    },
+    {
+        name: "Northern Mariana Islands",
+        iso: "MP",
+        population: 57216,
+    },
+    {
+        name: "Norway",
+        iso: "NO",
+        population: 5378857,
+    },
+    {
+        name: "Oman",
+        iso: "OM",
+        population: 4974986,
+    },
+    {
+        name: "Pakistan",
+        iso: "PK",
+        population: 216565318,
+    },
+    {
+        name: "Palau",
+        iso: "PW",
+        population: 18008,
+    },
+    {
+        name: "Palestine",
+        iso: "PS",
+        population: 4981420,
+    },
+    {
+        name: "Panama",
+        iso: "PA",
+        population: 4246439,
+    },
+    {
+        name: "Papua New Guinea",
+        iso: "PG",
+        population: 8776109,
+    },
+    {
+        name: "Paraguay",
+        iso: "PY",
+        population: 7044636,
+    },
+    {
+        name: "Peru",
+        iso: "PE",
+        population: 32510453,
+    },
+    {
+        name: "Philippines",
+        iso: "PH",
+        population: 108116615,
+    },
+    {
+        name: "Poland",
+        iso: "PL",
+        population: 37887768,
+    },
+    {
+        name: "Portugal",
+        iso: "PT",
+        population: 10226187,
+    },
+    {
+        name: "Puerto Rico",
+        iso: "PR",
+        population: 2933408,
+    },
+    {
+        name: "Qatar",
+        iso: "QA",
+        population: 2832067,
+    },
+    {
+        name: "Republic of the Congo",
+        iso: "CG",
+        population: 5380508,
+    },
+    {
+        name: "Reunion",
+        iso: "RE",
+        population: 888927,
+    },
+    {
+        name: "Romania",
+        iso: "RO",
+        population: 19364557,
+    },
+    {
+        name: "Russia",
+        iso: "RU",
+        population: 145872256,
+    },
+    {
+        name: "Rwanda",
+        iso: "RW",
+        population: 12626950,
+    },
+    {
+        name: "Saint Barthélemy",
+        iso: "BL",
+        population: 9847,
+    },
+    {
+        name: "Saint Kitts and Nevis",
+        iso: "KN",
+        population: 52823,
+    },
+    {
+        name: "Saint Lucia",
+        iso: "LC",
+        population: 182790,
+    },
+    {
+        name: "Saint Martin",
+        iso: "MF",
+        population: 38002,
+    },
+    {
+        name: "Saint Pierre and Miquelon",
+        iso: "PM",
+        population: 5822,
+    },
+    {
+        name: "Saint Vincent and the Grenadines",
+        iso: "VC",
+        population: 110589,
+    },
+    {
+        name: "Samoa",
+        iso: "WS",
+        population: 197097,
+    },
+    {
+        name: "San Marino",
+        iso: "SM",
+        population: 33860,
+    },
+    {
+        name: "Sao Tome and Principe",
+        iso: "ST",
+        population: 215056,
+    },
+    {
+        name: "Saudi Arabia",
+        iso: "SA",
+        population: 34268528,
+    },
+    {
+        name: "Senegal",
+        iso: "SN",
+        population: 16296364,
+    },
+    {
+        name: "Serbia",
+        iso: "RS",
+        population: 8772235,
+    },
+    {
+        name: "Seychelles",
+        iso: "SC",
+        population: 97739,
+    },
+    {
+        name: "Sierra Leone",
+        iso: "SL",
+        population: 7813215,
+    },
+    {
+        name: "Singapore",
+        iso: "SG",
+        population: 5804337,
+    },
+    {
+        name: "Sint Maarten",
+        iso: "SX",
+        population: 42388,
+    },
+    {
+        name: "Slovakia",
+        iso: "SK",
+        population: 5457013,
+    },
+    {
+        name: "Slovenia",
+        iso: "SI",
+        population: 2078654,
+    },
+    {
+        name: "Solomon Islands",
+        iso: "SB",
+        population: 669823,
+    },
+    {
+        name: "Somalia",
+        iso: "SO",
+        population: 15442905,
+    },
+    {
+        name: "South Africa",
+        iso: "ZA",
+        population: 58558270,
+    },
+    {
+        name: "South Korea",
+        iso: "KR",
+        population: 51225308,
+    },
+    {
+        name: "South Sudan",
+        iso: "SS",
+        population: 11062113,
+    },
+    {
+        name: "Spain",
+        iso: "ES",
+        population: 46736776,
+    },
+    {
+        name: "Sri Lanka",
+        iso: "LK",
+        population: 21323733,
+    },
+    {
+        name: "Sudan",
+        iso: "SD",
+        population: 42813238,
+    },
+    {
+        name: "Suriname",
+        iso: "SR",
+        population: 581372,
+    },
+    {
+        name: "Swaziland",
+        iso: "SZ",
+        population: 1148130,
+    },
+    {
+        name: "Sweden",
+        iso: "SE",
+        population: 10036379,
+    },
+    {
+        name: "Switzerland",
+        iso: "CH",
+        population: 8591365,
+    },
+    {
+        name: "Syria",
+        iso: "SY",
+        population: 17070135,
+    },
+    {
+        name: "Taiwan",
+        iso: "TW",
+        population: 23773876,
+    },
+    {
+        name: "Tajikistan",
+        iso: "TJ",
+        population: 9321018,
+    },
+    {
+        name: "Tanzania",
+        iso: "TZ",
+        population: 58005463,
+    },
+    {
+        name: "Thailand",
+        iso: "TH",
+        population: 69625582,
+    },
+    {
+        name: "Timor-Leste",
+        iso: "TL",
+        population: 1293119,
+    },
+    {
+        name: "Togo",
+        iso: "TG",
+        population: 8082366,
+    },
+    {
+        name: "Tokelau",
+        iso: "TK",
+        population: 1340,
+    },
+    {
+        name: "Tonga",
+        iso: "TO",
+        population: 104494,
+    },
+    {
+        name: "Trinidad and Tobago",
+        iso: "TT",
+        population: 1394973,
+    },
+    {
+        name: "Tunisia",
+        iso: "TN",
+        population: 11694719,
+    },
+    {
+        name: "Turkey",
+        iso: "TR",
+        population: 83429615,
+    },
+    {
+        name: "Turkmenistan",
+        iso: "TM",
+        population: 5942089,
+    },
+    {
+        name: "Turks and Caicos Islands",
+        iso: "TC",
+        population: 38191,
+    },
+    {
+        name: "Tuvalu",
+        iso: "TV",
+        population: 11646,
+    },
+    {
+        name: "Uganda",
+        iso: "UG",
+        population: 44269594,
+    },
+    {
+        name: "Ukraine",
+        iso: "UA",
+        population: 43993638,
+    },
+    {
+        name: "United Arab Emirates",
+        iso: "AE",
+        population: 9770529,
+    },
+    {
+        name: "United Kingdom",
+        iso: "GB",
+        population: 67530172,
+    },
+    {
+        name: "United States",
+        iso: "US",
+        population: 329064917,
+    },
+    {
+        name: "United States Virgin Islands",
+        iso: "VI",
+        population: 104578,
+    },
+    {
+        name: "Uruguay",
+        iso: "UY",
+        population: 3461734,
+    },
+    {
+        name: "Uzbekistan",
+        iso: "UZ",
+        population: 32981716,
+    },
+    {
+        name: "Vanuatu",
+        iso: "VU",
+        population: 299882,
+    },
+    {
+        name: "Vatican City",
+        iso: "VA",
+        population: 799,
+    },
+    {
+        name: "Venezuela",
+        iso: "VE",
+        population: 28515829,
+    },
+    {
+        name: "Vietnam",
+        iso: "VN",
+        population: 96462106,
+    },
+    {
+        name: "Wallis and Futuna",
+        iso: "WF",
+        population: 11432,
+    },
+    {
+        name: "Western Sahara",
+        iso: "EH",
+        population: 582463,
+    },
+    {
+        name: "Yemen",
+        iso: "YE",
+        population: 29161922,
+    },
+    {
+        name: "Zambia",
+        iso: "ZM",
+        population: 17861030,
+    },
+    {
+        name: "Zimbabwe",
+        iso: "ZW",
+        population: 14645468,
+    },
+];
+
+for (let i = 0; i < countries.length; i++) {
+    for (let j = 0; j < pop.length; j++) {
+        if (countries[i].ISO2 === pop[j].iso) {
+            countries[i].population = pop[j].population;
+            break;
+        }
+    }
+}
+
+countries.sort((a, b) => a.Country.localeCompare(b.Country));
+
+export default countries;
