@@ -2,10 +2,19 @@ import React, { useEffect, useState, useRef } from "react";
 import "./App.css";
 import Cal from "./components/Calendar";
 import LineChart from "./components/Chart";
-import Navbar from "./components/NavBar";
+import NavBar from "./components/NavBar";
 import Dropdown from "./components/Dropdown";
 import ActiveCountries from "./components/ActiveCountries";
-import { Switch, FormControlLabel, Typography } from "@mui/material";
+import {
+    Switch,
+    FormControlLabel,
+    Typography,
+    Box,
+    Button,
+} from "@mui/material";
+import { Routes, Route } from "react-router-dom";
+import About from "./pages/about";
+import { CalModal, CalIcon } from "./components/CalModal";
 
 function App() {
     // main data array returned from API
@@ -21,6 +30,16 @@ function App() {
         } else {
             setCapitaState(false);
         }
+    };
+
+    const [open, setOpen] = useState(false);
+
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
     };
 
     // date states from date range picker
@@ -143,33 +162,66 @@ function App() {
     };
 
     return (
-        <div className="App">
-            {/* <Navbar /> */}
-            <Dropdown
-                setSelectedCountries={setSelectedCountries}
-                selectedCountries={selectedCountries}
-            />
+        <Box display="flex" flexDirection="column" sx={{ my: 2 }}>
+            <Box
+                sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 2,
+                    justifyContent: "center",
+                }}
+            >
+                <Dropdown
+                    setSelectedCountries={setSelectedCountries}
+                    selectedCountries={selectedCountries}
+                />
+                <CalIcon handleOpen={handleOpen} date={date} />
+                <FormControlLabel
+                    control={<Switch onChange={handleCapitaClick} />}
+                    label={<Typography fontSize={15}>Per Capita</Typography>}
+                />
+            </Box>
 
-            <Cal date={date} setDate={setDate} />
-            <br />
-            <FormControlLabel
-                control={<Switch onChange={handleCapitaClick} />}
-                label={<Typography fontSize={15}>Per Capita</Typography>}
+            <Box
+                flexDirection="row"
+                sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 2,
+                    justifyContent: "center",
+                }}
+            >
+                <ActiveCountries
+                    selectedCountries={selectedCountries}
+                    setSelectedCountries={setSelectedCountries}
+                    countriesData={countriesData}
+                    setCountriesData={setCountriesData}
+                    prevSelectedCountries={prevSelectedCountries}
+                />
+            </Box>
+
+            <Box
+                sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 2,
+                    justifyContent: "center",
+                }}
+            >
+                <LineChart
+                    countriesData={countriesData}
+                    capitaState={capitaState}
+                    selectedCountries={selectedCountries}
+                />
+            </Box>
+
+            <CalModal
+                date={date}
+                setDate={setDate}
+                open={open}
+                handleClose={handleClose}
             />
-            <br />
-            <ActiveCountries
-                selectedCountries={selectedCountries}
-                setSelectedCountries={setSelectedCountries}
-                countriesData={countriesData}
-                setCountriesData={setCountriesData}
-                prevSelectedCountries={prevSelectedCountries}
-            />
-            <LineChart
-                countriesData={countriesData}
-                capitaState={capitaState}
-                selectedCountries={selectedCountries}
-            />
-        </div>
+        </Box>
     );
 }
 

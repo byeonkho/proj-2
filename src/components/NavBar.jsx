@@ -1,43 +1,28 @@
-import React from "react";
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import { NavLink } from "react-router-dom";
+import Dropdown from "./Dropdown";
 
-function Navbar() {
+const NavBar = () => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="/">
-                My Website
-            </a>
-            <button
-                className="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav ml-auto">
-                    <li className="nav-item active">
-                        <a className="nav-link" href="/">
-                            Home
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="/about">
-                            About
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="/contact">
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <AppBar position="sticky">
+            <Toolbar sx={{ display: "flex", justifyContent: "left" }}>
+                <NavLink to="/" style={{ marginRight: "20px" }}>
+                    <Typography variant="h7" color="white">
+                        Home
+                    </Typography>
+                </NavLink>
+                <NavLink to="/about" style={{ marginLeft: "20px" }}>
+                    <Typography variant="h7" color="white">
+                        About
+                    </Typography>
+                </NavLink>
+               
+            </Toolbar>
+        </AppBar>
     );
-}
+};
 
-export default Navbar;
+export default NavBar;
