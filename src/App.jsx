@@ -5,6 +5,7 @@ import LineChart from "./components/Chart";
 import Navbar from "./components/NavBar";
 import Dropdown from "./components/Dropdown";
 import ActiveCountries from "./components/ActiveCountries";
+import { Switch, FormControlLabel, Typography } from "@mui/material";
 
 function App() {
     // main data array returned from API
@@ -86,7 +87,7 @@ function App() {
             // account for first time input
         } else {
             fetchCountries = selectedCountries;
-            console.log("debug fetch");
+            console.log("debug fetch", fetchCountries);
         }
 
         try {
@@ -99,6 +100,10 @@ function App() {
                     `https://api.covid19api.com/country/${country.slug}?from=${startDate}&to=${endDate}`,
                     requestOptions
                 );
+
+                if (res.ok) {
+                    console.log("res ok");
+                }
 
                 if (!res.ok) {
                     throw new Error(`HTTP error! Status: ${res.status}`);
@@ -147,7 +152,10 @@ function App() {
 
             <Cal date={date} setDate={setDate} />
             <br />
-            <button onClick={handleCapitaClick}>per capita</button>
+            <FormControlLabel
+                control={<Switch onChange={handleCapitaClick} />}
+                label={<Typography fontSize={15}>Per Capita</Typography>}
+            />
             <br />
             <ActiveCountries
                 selectedCountries={selectedCountries}
@@ -159,6 +167,7 @@ function App() {
             <LineChart
                 countriesData={countriesData}
                 capitaState={capitaState}
+                selectedCountries={selectedCountries}
             />
         </div>
     );

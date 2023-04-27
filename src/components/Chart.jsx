@@ -47,9 +47,6 @@ const LineChart = (props) => {
     });
 
     useEffect(() => {
-        if (props.countriesData.length === 0) {
-            return;
-        }
         console.log("chart render");
         const countryNames = [];
         const series = [];
@@ -109,7 +106,7 @@ const LineChart = (props) => {
             },
             series: series,
         });
-    }, [props.countriesData, props.capitaState]);
+    }, [props.countriesData, props.capitaState, props.selectedCountries]);
 
     return (
         <div>

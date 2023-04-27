@@ -24,20 +24,23 @@ const ActiveCountries = (props) => {
     };
 
     const handleButtonClick = (el) => {
-        const countryObj = countries.find(
-            (obj) => obj.Slug === el.target.value
-        );
+        console.log("del value", el.target.value);
+
+        //handles users clicking on the icon which returns an undefined value.
+        const clickedValue = el.target.value || el.currentTarget.value;
+
+        const countryObj = countries.find((obj) => obj.Slug === clickedValue);
         const country = countryObj.Country;
         console.log("country value", country);
         removeSelectedCountry(country);
     };
 
-    return props.selectedCountries.map((country) => (
+    return props.selectedCountries.map((country, idx) => (
         <Button
             variant="outlined"
             size="small"
             endIcon={<CloseIcon />}
-            key={country.slug}
+            key={idx}
             value={country.slug}
             onClick={handleButtonClick}
         >
