@@ -13,13 +13,11 @@ import "./index.css";
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
         <BrowserRouter>
-            {/* <Box maxWidth="1200px" width="100%"> */}
                 <NavBar />
                 <Routes>
                     <Route path="/about" element={<About />} />
                     <Route path="/" element={<App />} />
                 </Routes>
-            {/* </Box> */}
         </BrowserRouter>
     </React.StrictMode>
 );

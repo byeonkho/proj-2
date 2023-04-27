@@ -48,6 +48,14 @@ const LineChart = (props) => {
 
     useEffect(() => {
         console.log("chart render");
+        setChartData({
+            options: {
+                xaxis: {
+                    categories: [],
+                },
+            },
+            series: [],
+        });
         const countryNames = [];
         const series = [];
 
@@ -102,6 +110,15 @@ const LineChart = (props) => {
             options: {
                 xaxis: {
                     categories: categories,
+                },
+                title: {
+                    text: props.capitaState
+                        ? "Daily New Cases (Per Capita)"
+                        : "Daily New Cases",
+                    align: "left",
+                    style: {
+                        fontSize: "20px",
+                    },
                 },
             },
             series: series,

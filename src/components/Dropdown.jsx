@@ -42,7 +42,7 @@ const Dropdown = (props) => {
         );
 
         // Clear the selected country
-        // setSelectedCountryDropdown("");
+        setSelectedCountryDropdown("");
     }
 
     return (

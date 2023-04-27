@@ -1,30 +1,17 @@
 import React, { useEffect, useState, useRef } from "react";
-import "./App.css";
-import Cal from "./components/Calendar";
 import LineChart from "./components/Chart";
-import NavBar from "./components/NavBar";
 import Dropdown from "./components/Dropdown";
 import ActiveCountries from "./components/ActiveCountries";
-import {
-    Switch,
-    FormControlLabel,
-    Typography,
-    Box,
-    Button,
-} from "@mui/material";
-import { Routes, Route } from "react-router-dom";
-import About from "./pages/about";
+import { Switch, FormControlLabel, Typography, Box } from "@mui/material";
 import { CalModal, CalIcon } from "./components/CalModal";
 
 function App() {
     // main data array returned from API
     const [countriesData, setCountriesData] = useState([]);
 
-    // toggles for chart data type
+    // toggles and handle for chart data type
     const [capitaState, setCapitaState] = useState(false);
-
     const handleCapitaClick = () => {
-        console.log("capita click", capitaState);
         if (!capitaState) {
             setCapitaState(true);
         } else {
@@ -32,12 +19,11 @@ function App() {
         }
     };
 
+    // calendar modal handlers
     const [open, setOpen] = useState(false);
-
     const handleOpen = () => {
         setOpen(true);
     };
-
     const handleClose = () => {
         setOpen(false);
     };
@@ -79,16 +65,17 @@ function App() {
         }
     }, [date]);
 
-    const requestOptions = {
-        method: "GET",
-        redirect: "follow",
-    };
-
+    // response function to getData on every state change
     useEffect(() => {
         if (selectedCountries.length > 0 && startDate && endDate) {
             getData();
         }
     }, [selectedCountries, startDate, endDate]);
+
+    const requestOptions = {
+        method: "GET",
+        redirect: "follow",
+    };
 
     const getData = async () => {
         let fetchCountries;
@@ -106,18 +93,22 @@ function App() {
             // account for first time input
         } else {
             fetchCountries = selectedCountries;
+            setCountriesData([]);
             console.log("debug fetch", fetchCountries);
         }
 
         try {
-            const dataPromises = fetchCountries.map(async (country, index) => {
-                await new Promise((resolve) =>
-                    setTimeout(resolve, index * 1000)
-                );
-
-                const res = await fetch(
-                    `https://api.covid19api.com/country/${country.slug}?from=${startDate}&to=${endDate}`,
-                    requestOptions
+            const dataPromises = fetchCountries.map(async (country, i) => {
+                const res = await new Promise((resolve) =>
+                    setTimeout(async () => {
+                        console.log(`Fetching data for ${country.slug}...`);
+                        resolve(
+                            await fetch(
+                                `https://api.covid19api.com/country/${country.slug}?from=${startDate}&to=${endDate}`,
+                                requestOptions
+                            )
+                        );
+                    }, i * 1500)
                 );
 
                 if (res.ok) {
@@ -150,6 +141,7 @@ function App() {
             });
             const allData = await Promise.all(dataPromises);
             const combinedData = allData.flat();
+            console.log(combinedData);
             setCountriesData((prevData) => [...prevData, ...combinedData]);
 
             // sets submitted dates and countries as ref
