@@ -25,9 +25,14 @@ const LineChart = (props) => {
                 labels: {
                     formatter: function (val) {
                         if (val >= 1) {
-                            return Math.round(val);
-                        } else {
+                            const formattedVal =
+                                Math.round(val).toLocaleString();
+                            return formattedVal;
+                        } else if (val === 0) {
                             return val;
+                        } else {
+                            const invertedVal = Math.round(1 / val);
+                            return `1 in ${invertedVal} people`;
                         }
                     },
                 },
@@ -42,6 +47,9 @@ const LineChart = (props) => {
     });
 
     useEffect(() => {
+        if (props.countriesData.length === 0) {
+            return;
+        }
         console.log("chart render");
         const countryNames = [];
         const series = [];
@@ -109,7 +117,7 @@ const LineChart = (props) => {
                 options={chartData.options}
                 series={chartData.series}
                 type="line"
-                width={1000}
+                width={1100}
             />
         </div>
     );

@@ -36,6 +36,7 @@ function App() {
     const prevEndDate = useRef();
     const prevSelectedCountries = useRef();
 
+    // sets startDate and endDate states based on date ranged selected
     useEffect(() => {
         if (date[0] && date[1]) {
             const localStartDate = new Date(

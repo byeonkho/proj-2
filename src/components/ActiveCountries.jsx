@@ -1,11 +1,12 @@
 import React from "react";
 import countries from "../countries";
+import CloseIcon from "@mui/icons-material/Close";
+import { Typography, Button } from "@mui/material";
 
 const ActiveCountries = (props) => {
     // instead of removing country from selectedCountries and re running GET, i want to delete from database and re-render chart
 
     const removeSelectedCountry = (country) => {
-
         // loops through the main data state, finds all elements with the matching country value and excludes them from the updated state
         props.setCountriesData((prevData) =>
             prevData.filter((el) => {
@@ -18,11 +19,9 @@ const ActiveCountries = (props) => {
             (el) => el.country !== country
         );
 
-    
         props.setSelectedCountries(selectedCountries);
         props.prevSelectedCountries.current = selectedCountries;
     };
-
 
     const handleButtonClick = (el) => {
         const countryObj = countries.find(
@@ -34,13 +33,18 @@ const ActiveCountries = (props) => {
     };
 
     return props.selectedCountries.map((country) => (
-        <button
+        <Button
+            variant="outlined"
+            size="small"
+            endIcon={<CloseIcon />}
             key={country.slug}
             value={country.slug}
             onClick={handleButtonClick}
         >
-            {country.country}
-        </button>
+            <Typography fontSize={13} variant="body1" fontWeight="bold">
+                {country.country}
+            </Typography>
+        </Button>
     ));
 };
 
